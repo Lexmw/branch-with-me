@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Git Branching</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e3e3e3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Learn Git Branching</h1>
+        <p>Click the buttons to learn Git commands!</p>
+        
+        <button onclick="showCommand('branch')">Create a Branch</button>
+        <button onclick="showCommand('merge')">Merge a Branch</button>
+        <button onclick="showCommand('rebase')">Rebase a Branch</button>
+        <button onclick="showCommand('pullrequest')">Pull Request</button>
+        
+        <div class="output" id="output">Git commands will appear here.</div>
+    </div>
+
+    <script>
+        function showCommand(action) {
+            let message = '';
+            switch(action) {
+                case 'branch':
+                    message = 'To create a new branch: <br> <code>git checkout -b feature-branch</code>';
+                    break;
+                case 'merge':
+                    message = 'To merge a branch into main: <br> <code>git checkout main</code><br><code>git merge feature-branch</code>';
+                    break;
+                case 'rebase':
+                    message = 'To rebase a branch onto main: <br> <code>git checkout feature-branch</code><br><code>git rebase main</code>';
+                    break;
+                case 'pullrequest':
+                    message = 'To create a Pull Request:<br> 1. Push branch: <code>git push origin feature-branch</code><br>2. Open PR on GitHub/GitLab.';
+                    break;
+                default:
+                    message = 'Unknown command';
+            }
+            document.getElementById('output').innerHTML = message;
+        }
+    </script>
+</body>
+</html>
